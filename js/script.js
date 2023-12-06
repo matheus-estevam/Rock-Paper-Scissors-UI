@@ -1,6 +1,7 @@
 const buttonRock = document.querySelector("#rock");
 const buttonPaper = document.querySelector("#paper");
 const buttonScissors = document.querySelector("#scissors");
+const playAgain = document.querySelector("#play-again");
 let playerScore = 0;
 let computerScore = 0;
 
@@ -18,16 +19,16 @@ function updateScore() {
 
 
 function announceWinner() {
-    const buttons = document.querySelectorAll("button"); // Selecione todos os botões no seu jogo
+    const buttons = document.querySelectorAll(".buttons button"); // Selecione todos os botões no seu jogo
     const winner = document.querySelector("#announce-winner"); // Selecione todos os botões no seu jogo
 
     // Anuncie o vencedor
     if (playerScore > computerScore) {
-        winner.innerHTML = "Congratulations! You won the game! , and reload webpage to play the next game.";
+        winner.innerHTML = "Congratulations! You won the game!";
     } else if (computerScore > playerScore) {
-        winner.innerHTML = "You lost! The computer won the game! , and reload webpage to play the next game.";
+        winner.innerHTML = "You lost! The computer won the game!";
     } else {
-        winner.innerHTML = "The game ended in a draw! , and reload webpage to play the next game.";
+        winner.innerHTML = "The game ended in a draw!";
     }
 
     // Desabilite cada botão
@@ -36,9 +37,6 @@ function announceWinner() {
     });
 
 }
-
-
-
 
 
 function playRound(e, computerSelection) {
@@ -77,8 +75,13 @@ function playRound(e, computerSelection) {
 
 }
 
+function reloadPage() {
+    location.reload();
+    console.log("reiniciou")
+}
 
 
+playAgain.addEventListener("click", reloadPage)
 buttonRock.addEventListener("click", playRound)
 buttonPaper.addEventListener("click", playRound)
 buttonScissors.addEventListener("click", playRound)
