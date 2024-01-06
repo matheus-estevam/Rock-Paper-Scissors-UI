@@ -7,19 +7,46 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <main>
+    <div class="translate">
+      <button>Translate</button>
+    </div>
+    <div class="flex">
+      <div>
         <h1>Rock Paper Scissors</h1>
-        <div class="buttons">
-          <button id="rock" value="Rock">rock</button>
-          <button id="paper" value="Paper">paper</button>
-          <button id="scissors" value="Scissors">scissors</button>
-        </div>
-        <div id="result"></div>
-        <p><span id="player-score"></span></p>
-        <p><span id="computer-score"></span></p>
-        <span id="announce-winner"></span>
+        <h2>Choose Your Weapon</h2>
+        <h3>First To 5 Wins!</h3>
       </div>
-      <button id="play-again">Play Again!</button>
+
+      <div class="buttons">
+        <button id="rock" value="Rock">Rock</button>
+        <button id="paper" value="Paper">Paper</button>
+        <button id="scissors" value="Scissors">Scissors</button>
+      </div>
+
+      <div class="labels">
+        <span id="playerLabel">Player scores</span>
+        <span id="compLabel">Computer scores</span>
+      </div>
+
+      
+    <div class="scores">
+      <div><p><span id="player-score"></span></p></div>
+      <div> <p><span id="computer-score"></span></p></div>
+    </div>
+
+  <div><span id="resultsLabel">Results</label></div>
+    
+    <div class="scores">
+       <div id="result"></div>
+    </div>
+
+          <span id="announce-winner"></span>
+          <div>
+            <button id="play-again">Play Again!</button>
+          </div>
+    </div>
+
+    <footer>Made by: <img id="gh-logo" src="./img/githublogo.png" alt="github logo"/><a href="https://github.com/matheus-estevam" target="_blank"> Matheus Estevam</a></footer>
   </body>
   <script src="./js/script.js"></script>
 </html>
