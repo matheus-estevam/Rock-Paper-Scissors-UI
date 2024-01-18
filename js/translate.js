@@ -28,6 +28,74 @@ function translateItems() {
   playAgain.innerHTML = "Jogue Denovo!";
 
   footerText.innerHTML = "Feito por:";
+
+  function updateScore() {
+    document.querySelector("#player-score").innerHTML = `${playerScore}`;
+    document.querySelector("#computer-score").innerHTML = `${computerScore}`;
+  }
+
+  function announceWinnerPtBr() {
+    const buttons = document.querySelectorAll(".buttons button"); // Selecione todos os botões no seu jogo
+    const winner = document.querySelector("#announce-winner"); // Selecione todos os botões no seu jogo
+
+    // Anuncie o vencedor
+    if (playerScore > computerScore) {
+      winner.innerHTML = "Parabéns! Você ganhou o jogo!";
+    } else if (computerScore > playerScore) {
+      winner.innerHTML = "Você perdeu! O computador ganhou o jogo!";
+    } else {
+      winner.innerHTML = "O jogo terminou empatado!";
+    }
+
+    // Desabilite cada botão
+    buttons.forEach((button) => {
+      button.disabled = true;
+    });
+  }
+
+  function playRoundPtBr(e, computerSelection) {
+    const playerSelection = e.target.value.toLowerCase();
+    computerSelection = getComputerChoice();
+    const resultElement = document.querySelector("#result");
+
+    if (computerSelection === "paper" && playerSelection === "rock") {
+      resultElement.innerHTML = "Você perdeu! O papel vence o rock";
+      computerScore++;
+    } else if (
+      computerSelection === "scissors" &&
+      playerSelection === "paper"
+    ) {
+      resultElement.innerHTML = "Você perdeu! Tesoura vence papel";
+      computerScore++;
+    } else if (computerSelection === "rock" && playerSelection === "scissors") {
+      resultElement.innerHTML = "Você perdeu! Rock vence tesoura";
+      computerScore++;
+    } else if (computerSelection === "scissors" && playerSelection === "rock") {
+      resultElement.innerHTML = "Você ganhou! Rock vence tesoura";
+      playerScore++;
+    } else if (computerSelection === "rock" && playerSelection === "paper") {
+      resultElement.innerHTML = "Você ganhou! O papel vence o rock";
+      playerScore++;
+    } else if (
+      computerSelection === "paper" &&
+      playerSelection === "scissors"
+    ) {
+      resultElement.innerHTML = "Você ganhou! Tesoura vence papel";
+      playerScore++;
+    } else if (computerSelection === playerSelection) {
+      resultElement.innerHTML = "É um empate!";
+    }
+
+    updateScore();
+
+    if (playerScore === 5 || computerScore === 5) {
+      announceWinnerPtBr();
+    }
+  }
+
+  buttonRock.addEventListener("click", playRoundPtBr);
+  buttonPaper.addEventListener("click", playRoundPtBr);
+  buttonScissors.addEventListener("click", playRoundPtBr);
 }
 
 translateButton.addEventListener("click", translateItems);
